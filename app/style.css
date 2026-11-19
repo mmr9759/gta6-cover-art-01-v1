@@ -1,0 +1,127 @@
+@font-face {
+  font-family: 'Anton';
+  src: url('./fonts/Anton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: #14101d;
+  color: #f4f1fa;
+  font: 15px/1.45 system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.app { display: flex; gap: 0; min-height: 100vh; }
+.controls {
+  width: 348px; flex: none;
+  padding: 20px 20px 32px;
+  background: linear-gradient(180deg, #1d1430, #14101d 60%);
+  border-right: 1px solid #2c2144;
+  display: flex; flex-direction: column; gap: 18px;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+.brand h1 {
+  margin: 0;
+  font-family: 'Anton', 'Arial Narrow', sans-serif;
+  font-size: 40px; line-height: 0.95; letter-spacing: 1px;
+  background: linear-gradient(90deg, #ff9a3d, #ff2ea6 55%, #00e5ff);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.brand .tag { margin: 6px 0 0; color: #b9aecb; font-size: 13px; }
+
+.group { display: flex; flex-direction: column; gap: 10px; }
+.group h2 {
+  margin: 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: #ff9a3d;
+}
+.note { margin: 0; color: #8f86a3; font-size: 12.5px; }
+
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13.5px; }
+label.check { flex-direction: row; align-items: center; gap: 8px; font-weight: 500; }
+input[type=text], select {
+  font: inherit; color: #f4f1fa;
+  padding: 9px 10px; border: 1px solid #3a2d55; border-radius: 8px;
+  background: #241b38;
+}
+input[type=text]:focus, select:focus { outline: 2px solid #ff2ea6; outline-offset: 1px; }
+input[type=range] { width: 100%; accent-color: #ff2ea6; }
+input[type=file] { font: inherit; }
+
+button {
+  font: inherit; font-weight: 700; padding: 10px 12px;
+  border: 1px solid #3a2d55; border-radius: 8px;
+  background: #241b38; color: #f4f1fa; cursor: pointer;
+}
+button:hover { border-color: #ff2ea6; }
+button.primary {
+  background: linear-gradient(90deg, #ff7a18, #ff2ea6);
+  border: 0; color: #fff;
+}
+button.active { border-color: #00e5ff; box-shadow: 0 0 0 1px #00e5ff inset; }
+.upload {
+  display: block; text-align: center; padding: 12px;
+  border: 1.5px dashed #6b5a8f; border-radius: 8px; cursor: pointer;
+  font-weight: 700; color: #ffd166;
+}
+.upload input { display: none; }
+.samples { display: flex; gap: 8px; }
+.samples button { flex: 1; padding: 8px; font-size: 13px; }
+
+.layout-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.layout-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 8px 4px; font-size: 12px;
+}
+.layout-btn .mini {
+  position: relative; display: block;
+  width: 52px; height: 40px;
+  background: #12081f; border: 1px solid #4a3a68; border-radius: 3px; overflow: hidden;
+}
+.layout-btn .mini i {
+  position: absolute; display: block;
+  background: linear-gradient(135deg, #ff9a3d, #c22a7a);
+  border: 1px solid rgba(255,255,255,0.75);
+}
+.grade-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.grade-btn {
+  position: relative; height: 44px; padding: 0;
+  border: 1px solid rgba(255,255,255,0.25); overflow: hidden;
+}
+.grade-btn span {
+  position: absolute; inset: auto 0 0 0; padding: 3px 6px;
+  background: rgba(10,3,22,0.72); font-size: 12px; text-align: left;
+}
+.chips { display: flex; gap: 8px; }
+.chip { flex: 1; padding: 8px 4px; font-size: 13px; }
+
+.panel-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.panel-row { padding: 6px 10px; font-size: 12.5px; font-weight: 600; }
+
+.export { border-top: 1px solid #2c2144; padding-top: 16px; }
+#status { margin: 0; color: #7ef0e0; font-size: 13px; min-height: 1.2em; }
+
+.stage {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  padding: 28px; min-width: 0;
+  background:
+    radial-gradient(900px 500px at 70% 0%, rgba(255,46,166,0.14), transparent 60%),
+    radial-gradient(700px 500px at 20% 100%, rgba(0,229,255,0.10), transparent 60%),
+    #14101d;
+}
+#preview {
+  max-width: 100%; max-height: calc(100vh - 56px);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.12);
+  background: #12081f;
+}
+
+/* Screenshot mode: the cover alone, edge to edge. */
+body.shot-cover .controls { display: none; }
+body.shot-cover .stage { padding: 0; }
+body.shot-cover #preview {
+  width: 100vw !important; height: 100vh !important;
+  max-width: none; max-height: none; box-shadow: none;
+}
+body.shot-editor .controls { max-height: none; }

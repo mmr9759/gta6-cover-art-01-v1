@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Lights Cover Studio — GTA-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <header class="brand">
+      <h1>VICE LIGHTS</h1>
+      <p class="tag">Cover Studio — your photo, GTA-poster style.</p>
+    </header>
+
+    <section class="group">
+      <h2>1 · Photos</h2>
+      <label class="upload">Add your photos
+        <input id="photoInput" type="file" accept="image/*" multiple>
+      </label>
+      <div class="samples">
+        <button id="samplePier" type="button">Pier sample</button>
+        <button id="sampleBoulevard" type="button">Boulevard sample</button>
+      </div>
+      <p class="note">Photos stay on your machine — nothing is uploaded.</p>
+    </section>
+
+    <section class="group">
+      <h2>2 · Layout</h2>
+      <div id="layouts" class="layout-grid" role="group" aria-label="Cover layout"></div>
+    </section>
+
+    <section class="group">
+      <h2>3 · Colour grade</h2>
+      <div id="grades" class="grade-grid" role="group" aria-label="Colour grade"></div>
+    </section>
+
+    <section class="group">
+      <h2>4 · Caption</h2>
+      <label>Title
+        <input id="title" type="text" maxlength="40" value="Sunset Heist">
+      </label>
+      <label>Subtitle
+        <input id="subtitle" type="text" maxlength="48" value="VICE LIGHTS • EST. 2026">
+      </label>
+      <label>Tagline
+        <input id="tagline" type="text" maxlength="64" value="One last ride down the coast.">
+      </label>
+      <div id="titleStyles" class="chips" role="group" aria-label="Title lettering"></div>
+    </section>
+
+    <section class="group">
+      <h2>5 · Crop this panel</h2>
+      <div id="panelList" class="panel-list" role="group" aria-label="Panels"></div>
+      <label>Photo in this panel
+        <select id="panelPhoto"></select>
+      </label>
+      <label>Zoom <span id="panelZoomVal">100%</span>
+        <input id="panelZoom" type="range" min="1" max="3" step="0.01" value="1">
+      </label>
+      <label>Move left–right
+        <input id="panelX" type="range" min="-0.5" max="0.5" step="0.01" value="0">
+      </label>
+      <label>Move up–down
+        <input id="panelY" type="range" min="-0.5" max="0.5" step="0.01" value="0">
+      </label>
+      <label class="check"><input id="panelFlip" type="checkbox"> Flip photo</label>
+    </section>
+
+    <section class="group export">
+      <h2>6 · Export PNG</h2>
+      <label>Post size
+        <select id="exportSize">
+          <option value="1080x1080">Square · 1080 × 1080</option>
+          <option value="1080x1350" selected>Portrait · 1080 × 1350</option>
+          <option value="1920x1080">Landscape · 1920 × 1080</option>
+        </select>
+      </label>
+      <button id="exportOne" type="button" class="primary">Export this size</button>
+      <button id="exportAll" type="button">Export all 3 sizes</button>
+      <button id="surprise" type="button">Surprise me</button>
+      <p id="status" role="status"></p>
+    </section>
+  </section>
+
+  <section class="stage" aria-label="Cover preview">
+    <canvas id="preview" width="1080" height="1350" aria-label="The cover preview"></canvas>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
